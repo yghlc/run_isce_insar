@@ -1,0 +1,12 @@
+PRJ_SCONS_BUILD=/home/hlc/programs/isce_v2.2/temp/build
+PRJ_SCONS_INSTALL=/home/hlc/programs/isce_v2.2/isce
+LIBPATH=/usr/lib /usr/local/lib /usr/lib/gcc/x86_64-linux-gnu/5.4.0 /usr/lib/x86_64-linux-gnu/hdf5/serial
+CPPPATH=/usr/include/python3.5m /usr/include/hdf5/serial /usr/include/gdal
+FORTRAN=/usr/bin/gfortran 
+CC=/usr/bin/gcc
+CXX=/usr/bin/g++
+FORTRANPATH=/usr/include
+MOTIFLIBPATH=/usr/lib
+X11LIBPATH=/usr/include
+MOTIFINCPATH=/usr/include
+X11INCPATH=/usr/include

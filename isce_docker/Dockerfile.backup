@@ -1,0 +1,78 @@
+FROM ubuntu:16.04
+MAINTAINER Lingcao Huang
+
+# nvidia docker for installing ISCE (InSAR software)
+
+# gdal related:
+#       libproj-dev libgdal-dev libgeos-dev libjson0-dev vim python-gdal \
+#	    dans-gdal-scripts
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        pkg-config \
+        m4 \
+        zip \
+        g++ \
+        zlib1g-dev \
+        unzip \
+        python \
+        python3-dev \
+        vim \
+        git \
+	    wget \
+	    gedit
+
+# isce dependency
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libgmp-dev libmpfr-dev libmpc-dev libc6-dev-i386 \
+        gfortran \
+        fftw-dev \
+        libfftw3-dev \
+        sqlite3 libsqlite3-dev \
+        libmotif-dev \
+        libxt-dev  \
+        libatlas-dev libatlas-base-dev
+
+# create a new user, hlc
+
+RUN apt-get update && apt-get -y install \
+    sudo \
+    scons \
+    libhdf5-dev \
+    libproj-dev gdal-bin libgdal-dev libgeos-dev libjson0-dev
+
+RUN apt-get update && apt-get -y install \
+    python3-pip
+
+RUN pip3 install --upgrade pip
+
+RUN pip3 install GDAL
+
+
+# Clean-up
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# need to create a user: hlc
+
+RUN useradd -m hlc && echo "hlc:hlc123" | chpasswd && adduser hlc sudo
+USER hlc
+CMD /bin/bash
+WORKDIR /home/hlc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
